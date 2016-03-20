@@ -5,11 +5,12 @@
 #define CARRIER      5
 #define DATA_DELAY   416  /* 1/(1.2*10^3)/2 = 416 aka 1.2 kHz */
 #define BIT_SIZE     25
-#define MSG_LEN      8
+#define MSG_LEN      128
 #define TIMEOUT      1000
 
 #include "Arduino.h"
 #include "communication.h"
+#include "pinmap.h"
 
 static bool receivingBot = true;  /* COM 9 receiving --> true; COM 12
                                    * transmitting --> false 

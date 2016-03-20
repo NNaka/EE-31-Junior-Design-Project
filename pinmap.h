@@ -45,6 +45,7 @@
 
 /* Communication pins */
 
+#define COMM_INTERR  0    /* pin 2 */
 #define RECEIVE_PIN      A5
 #define TRANSMIT_PIN     12
 #define TIMEOUT          5000
