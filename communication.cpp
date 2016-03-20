@@ -1,5 +1,7 @@
-/* communication.cpp */
-/* Contains interface for communciation of bots */
+/* communication.cpp
+ *
+ * Contains interface for communciation of bots 
+ */
 
 /* data constants */
 #define CARRIER      5
@@ -88,7 +90,7 @@ void loop()
 
 void setReceiving(void) { receiving = true; }
 
-void transmit(unsigned msg[], unsigned len) 
+void transmit(unsigned msg[], const unsigned len) 
 {
     sendBits(hsMsg, MSG_LEN); /* sending handshake so other bot knows message
                                * is coming */
@@ -96,7 +98,7 @@ void transmit(unsigned msg[], unsigned len)
     digitalWrite(TRANSMIT_PIN, LOW); /* ensure low afterwards */
 }
 
-void sendBits(unsigned bits[], unsigned len) 
+void sendBits(unsigned bits[], const unsigned len) 
 {
     for (unsigned i(0); i < len; ++i) {
         for (unsigned j(0); j < BIT_SIZE; ++j) {
@@ -106,7 +108,7 @@ void sendBits(unsigned bits[], unsigned len)
     }
 }
 
-void receive(unsigned bits[], unsigned len) 
+void receive(unsigned bits[], const unsigned len) 
 {
     unsigned sum;
     for (unsigned i(0); i < 2 * len; ++i) {
@@ -124,7 +126,7 @@ void receive(unsigned bits[], unsigned len)
     if (receivingBot) transmit(ack, MSG_LEN);
 }
 
-bool checkMsg(unsigned msgToCheck[], unsigned correctMsg[], unsigned len) 
+bool checkMsg(unsigned msgToCheck[], unsigned correctMsg[], const unsigned len) 
 {
     for (unsigned i(0); i < len; ++i) {
         if (hsMsg[i] != msgToCheck[i] || msgToCheck[i+len] != correctMsg[i]) {
